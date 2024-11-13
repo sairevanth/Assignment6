@@ -1,5 +1,6 @@
 from mortgage.pixell_lookup import MortgageRate, PaymentFrequency, VALID_AMORTIZATION
 
+VALID_AMORTIZATION = {5, 10, 15, 20, 25, 30}
 
 """
 Description: A class meant to manage Mortgage options.
@@ -23,15 +24,15 @@ class Mortgage:
          raise ValueError("Loan Amount must be positive.")
      self.loan_amount = loan_amount
      try:
-         self.__rate = MortgageRate[rate]
+         self.rate = MortgageRate[rate]
      except KeyError:
          raise ValueError("Rate provided is invalid.")
      try:
-         self.__frequency = PaymentFrequency[frequency]
+         self.frequency = PaymentFrequency[frequency]
      except KeyError:
          raise ValueError("Frequency provided is invalid.")
      if amortization not in VALID_AMORTIZATION:
          raise ValueError("Amortization provided is invalid.")
-     self.__amortization = amortization
+     self.amortization = amortization
 
 
